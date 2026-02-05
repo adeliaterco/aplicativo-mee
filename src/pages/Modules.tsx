@@ -3,21 +3,21 @@ import { modules } from '@/data/modules';
 import { getModuleProgress, markModuleComplete, getCompletedModulesCount } from '@/lib/storage';
 import { ChevronLeft, Check, Clock, Sparkles, Heart, Target } from 'lucide-react';
 
-// Images Unsplash pour chaque module
-const getModuleImageId = (num: number) => {
+// Images personnalisées pour chaque module
+const getModuleImage = (num: number): string => {
   const images = [
-    '1506126613408-eca07ce68773', // calme
-    '1447752875215-b816f382679c', // méditation
-    '1499209974431-9dddcece7f88', // nature
-    '1473830394358-91588751b241', // paix
-    '1515378791036-0648a3336e77', // mindfulness
-    '1544367567-0f2fcb009e0b', // réflexion
-    '1506097425191-7ad538b29cef', // mouvement
-    '1517960413843-0aee8e2b3285', // yoga
-    '1499343162160-cd1617c1c7f3', // liberté
-    '1502823403499-6ccfcf4fb453', // énergie
-    '1501426026921-2fe5fdf4b7bb', // célébration
-    '1518531933037-91b2f5f229cc'  // transformation
+    'https://i.ibb.co/KRDgP4M/Generatedimage-1770325206838.jpg',      // Module 1
+    'https://i.ibb.co/6Rb0mBj3/Generatedimage-1770325211671.jpg',     // Module 2
+    'https://i.ibb.co/CpCX6qh4/Generatedimage-1770325216438.jpg',     // Module 3
+    'https://i.ibb.co/0pB27ZJt/Generatedimage-1770325222725.jpg',     // Module 4
+    'https://i.ibb.co/Qv9HdvLC/Generatedimage-1770325229420.jpg',     // Module 5
+    'https://i.ibb.co/pj0nv0tV/Generatedimage-1770325232537.png',     // Module 6
+    'https://i.ibb.co/jvzXJWPw/Generatedimage-1770325234906.jpg',     // Module 7
+    'https://i.ibb.co/b5mqzz63/Generatedimage-1770325237388.jpg',     // Module 8
+    'https://i.ibb.co/Tx8hMrSm/Generatedimage-1770325242104.jpg',     // Module 9
+    'https://i.ibb.co/1JrPRkCh/Generatedimage-1770325245872.jpg',     // Module 10
+    'https://i.ibb.co/Xx0QSvt3/Generatedimage-1770325250154.jpg',     // Module 11
+    'https://i.ibb.co/xtdL2yJ0/Generatedimage-1770325252654.jpg'      // Module 12
   ];
   return images[num - 1] || images[0];
 };
@@ -74,12 +74,12 @@ const Modules = () => {
         {/* Banner du module avec image */}
         <div className="relative h-[200px] w-full rounded-2xl overflow-hidden mb-6">
           <img 
-            src={`https://images.unsplash.com/photo-${getModuleImageId(module.number)}?w=800&auto=format&fit=crop&q=80`}
+            src={getModuleImage(module.number)}
             alt={module.title}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
             onError={(e) => {
-              e.currentTarget.src = 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=80';
+              e.currentTarget.src = 'https://i.ibb.co/KRDgP4M/Generatedimage-1770325206838.jpg';
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
@@ -346,7 +346,7 @@ const Modules = () => {
                 {/* Thumbnail */}
                 <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-taupe-light">
                   <img 
-                    src={`https://images.unsplash.com/photo-${getModuleImageId(mod.number)}?w=100&h=100&fit=crop`}
+                    src={getModuleImage(mod.number)}
                     alt=""
                     className="w-full h-full object-cover opacity-70"
                     loading="lazy"
