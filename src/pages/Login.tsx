@@ -4,13 +4,12 @@ import { login } from '@/lib/storage';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password) return;
+    if (!email) return;
     
     setIsLoading(true);
     setTimeout(() => {
@@ -49,21 +48,6 @@ const Login = () => {
             />
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-text-secondary mb-2">
-              Mot de passe
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input-field"
-              placeholder="••••••••"
-              required
-            />
-          </div>
-
           <button
             type="submit"
             disabled={isLoading}
@@ -72,14 +56,14 @@ const Login = () => {
             {isLoading ? (
               <div className="w-5 h-5 border-2 border-card border-t-transparent rounded-full animate-spin" />
             ) : (
-              'Se connecter'
+              'Accéder à mon espace'
             )}
           </button>
         </form>
 
         {/* Microcopy */}
         <p className="text-center text-xs text-text-secondary mt-8 leading-relaxed">
-          En vous connectant, vous accédez à votre espace personnel.
+          En vous connectant, vous accédez à votre espace personnel sécurisé.
         </p>
 
         {/* Decorative element */}
